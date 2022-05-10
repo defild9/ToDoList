@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ToDo>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<a asp-action ="AddToDo" class = "btn bth-success">Add to do</a>
+<div class="text-center">
+    <h1 class="display-4">ToDoList</h1>
+    <table class = "table table-borderless table-striped">
+		<thread>
+			<tr>
+			    <td>#</td>
+                <td>Title</td>
+				<td>Desct</td>
+				<td>DeadLine</td>
+				<td>Status</td>
+				<td></td>
+            </tr>
+        </thread>
+		<tbody>
+			@foreach(var item in Model)
+			{
+					<tr>
+						<td></td>
+						<td>@item.Title</td>
+						<td>@item.Desc</td>
+						<td>@item.Deadline</td>
+						<td>
+							@if (item.Status== Status.pass)
+							{
+							<span class = "badge">Pass</span>
+							}
+							else
+							{
+							<span class = "badge">Not Pass</span>
+							}
+
+						</td>
+						<td><a asp-action = "EditToDo" asp-all-route-id ="@item.Id">Edit</a></td>
+					</tr>
+			}
+		</tbody>
+    </table>
+</div>
